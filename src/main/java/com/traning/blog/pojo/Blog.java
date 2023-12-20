@@ -2,6 +2,7 @@ package com.traning.blog.pojo;
 
 import lombok.Builder;
 import lombok.Data;
+import lombok.ToString;
 import lombok.experimental.Accessors;
 
 import java.util.ArrayList;
@@ -9,6 +10,7 @@ import java.util.Date;
 import java.util.List;
 
 @Data
+@ToString
 public class Blog {
     private Long id;
 
@@ -51,7 +53,5 @@ public class Blog {
     private List<Tag> tags = new ArrayList<>();
 
     private List<Comment> comments = new ArrayList<>();
-
-
 
 }

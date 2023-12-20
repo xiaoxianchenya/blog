@@ -12,6 +12,7 @@ import jakarta.annotation.Resource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
@@ -50,6 +51,16 @@ public class IndexController {
         model.addAttribute("recommendBlogs",recommendBolgList);
 
         return "index";
+    }
+
+    @PostMapping("/search")
+    public String search(@RequestParam(required = false, defaultValue = "1", value = "pagenum") Integer pageNum,
+                         @RequestParam("query") String title, Model model) {
+        PageHelper.startPage(pageNum, 5);
+        List<Blog> blogs = blogService.searchByTitle(title);
+        PageInfo pageInfo = new PageInfo(blogs);
+        model.addAttribute("pageInfo", pageInfo);
+        return "/search";
     }
 
 }

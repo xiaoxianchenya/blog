@@ -8,3 +8,5 @@ import org.apache.ibatis.annotations.Param;
 public interface UserMapper {
     User selectUserByUserName(@Param("username") String username,@Param("md5Password") String md5Password);
 }
+
+

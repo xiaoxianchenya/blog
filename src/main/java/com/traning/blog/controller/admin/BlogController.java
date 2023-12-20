@@ -13,11 +13,13 @@ import jakarta.annotation.Resource;
 import jakarta.servlet.http.HttpSession;
 import org.apache.ibatis.annotations.Param;
 import org.slf4j.MDC;
+import org.springframework.boot.Banner;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.lang.annotation.Retention;
 import java.util.List;
 
 @Controller
@@ -43,7 +45,7 @@ public class BlogController {
     @GetMapping()
     public String getBlogs(@RequestParam(required = false, defaultValue = "1", value = "pagenum") Integer pageNum,
                            Model model) {
-        PageHelper.startPage(pageNum, 5);
+        PageHelper.startPage(pageNum, 5);//
         List<Blog> blogList = blogService.getAllBlogs();
         PageInfo blogPageInfo = new PageInfo(blogList);
         model.addAttribute("pageInfo", blogPageInfo);
@@ -75,7 +77,6 @@ public class BlogController {
     public String toUpdateBlog(@PathVariable("id") Long id, Model model){
         Blog blog = blogService.getBlogById(id);
         model.addAttribute("blog",blog);
-
         List<Type> types = typeService.getAllTypes();
         List<Tag> tags = tagService.getAllTags();
         model.addAttribute("types", types);
@@ -115,5 +116,4 @@ public class BlogController {
         attributes.addFlashAttribute("msg", "删除成功");
         return "redirect:/admin/blogs";
     }
-
 }

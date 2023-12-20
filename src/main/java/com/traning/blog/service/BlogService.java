@@ -18,4 +18,6 @@ public interface BlogService {
     List<Blog> getIndexBlog();
 
     List<Blog> getRecommendBlog();
+
+    List<Blog>  searchByTitle(String query);
 }

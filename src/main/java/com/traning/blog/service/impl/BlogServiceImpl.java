@@ -81,4 +81,11 @@ public class BlogServiceImpl implements BlogService {
     public List<Blog> getRecommendBlog() {
         return blogMapper.getRecommendBlog();
     }
+
+    @Override
+    public List<Blog> searchByTitle(String query) {
+        return blogMapper.searchByTitle(query);
+    }
+
+
 }

@@ -2,6 +2,7 @@ package com.traning.blog.controller.admin;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.traning.blog.pojo.Blog;
 import com.traning.blog.pojo.Type;
 import com.traning.blog.service.TypeService;
 import jakarta.annotation.Resource;
@@ -73,5 +74,7 @@ public class TypeController {
         attributes.addAttribute("msg", "删除成功");
         return "redirect:/admin/types";
     }
+
+
 
 }

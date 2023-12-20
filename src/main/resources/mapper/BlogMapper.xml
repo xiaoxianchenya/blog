@@ -151,4 +151,14 @@
         WHERE `recommend` = 1
         ORDER BY update_time DESC
     </select>
+
+    <select id="searchByTitle" resultMap="blogResult">
+        <bind name="pattern" value="'%' + query + '%'" />
+        select b.id, b.title, b.first_picture, b.views, b.update_time, b.description,
+        t.name typename,
+        u.nickname, u.avatar
+        from t_blog b, t_type t, t_user u
+        where b.type_id = t.id and  u.id = b.user_id and (b.title like #{pattern} or b.content like  #{pattern})
+        order by b.update_time desc
+    </select>
 </mapper>
