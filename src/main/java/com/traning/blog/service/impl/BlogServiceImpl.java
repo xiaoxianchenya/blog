@@ -103,5 +103,10 @@ public class BlogServiceImpl implements BlogService {
         return blog;
     }
 
+    @Override
+    public List<Blog> getBlogByTagId(Long id) {
+        return blogMapper.getBlogByTagId(id);
+    }
+
 
 }

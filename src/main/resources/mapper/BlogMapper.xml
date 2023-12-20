@@ -170,4 +170,14 @@
         FROM t_blog b, t_user u, t_tag tag, t_blog_tags tb
         WHERE b.user_id = u.id AND tb.blog_id = b.id AND tb.tag_id = tag.id AND  b.id = #{id}
     </select>
+
+    <select id="getBlogByTagId" resultMap="blogResult">
+        SELECT b.id, b.title, b.first_picture, b.views, b.update_time, b.description,
+               u.nickname, u.avatar,
+               tag.id tagid, tag.name tagname,
+               type.name typename,type.id typeid
+        FROM t_blog b,t_tag tag,t_user u,t_blog_tags tb,t_type `type`
+        WHERE b.user_id = u.id AND tb.blog_id = b.id AND b.type_id = type.id AND tb.tag_id = tag.id AND  tag.id = #{id}
+        ORDER BY b.update_time DESC
+    </select>
 </mapper>

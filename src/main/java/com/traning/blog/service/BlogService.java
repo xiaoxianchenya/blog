@@ -22,4 +22,6 @@ public interface BlogService {
     List<Blog>  searchByTitle(String query);
 
     Blog getDetailedBlog(Long id);
+
+    List<Blog> getBlogByTagId(Long id);
 }
