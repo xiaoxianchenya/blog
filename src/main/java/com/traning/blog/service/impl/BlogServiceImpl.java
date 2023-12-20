@@ -87,5 +87,10 @@ public class BlogServiceImpl implements BlogService {
         return blogMapper.searchByTitle(query);
     }
 
+    @Override
+    public List<Blog> searchByTypeId(Long tid) {
+        return blogMapper.searchByTypeId(tid);
+    }
+
 
 }

@@ -24,4 +24,6 @@ public interface BlogMapper {
     List<Blog> getRecommendBlog();
 
     List<Blog> searchByTitle(String query);
+
+    List<Blog> searchByTypeId(Long tid);
 }
