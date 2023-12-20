@@ -18,4 +18,8 @@ public interface BlogMapper {
     void deleteBlogById(Long id);
 
     List<Blog> selectByTypeId(Long id);
+
+    List<Blog> getIndexBlog();
+
+    List<Blog> getRecommendBlog();
 }

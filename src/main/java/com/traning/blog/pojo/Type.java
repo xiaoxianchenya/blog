@@ -11,4 +11,6 @@ public class Type {
     private Long id;
     private String name;
 
+
+    List<Blog> blogs = new ArrayList<>();
 }

@@ -19,4 +19,6 @@ public interface TypeMapper {
     void addType(Type type);
 
     void updateType(Type type);
+
+    List<Type> getIndexTypes();
 }

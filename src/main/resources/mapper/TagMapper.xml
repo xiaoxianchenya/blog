@@ -35,4 +35,19 @@
         delete from t_tag
         where id = #{id}
     </delete>
+
+    <resultMap id="indexTagResult" type="com.traning.blog.pojo.Tag">
+        <id property="id" column="id"/>
+        <result property="name" column="name"/>
+        <collection property="blogs" ofType="com.traning.blog.pojo.Blog">
+            <id property="id" column="blogid"/>
+            <result property="title" column="title"/>
+        </collection>
+    </resultMap>
+    <select id="getIndexTags" resultMap="indexTagResult">
+        select t.id,t.name,
+               b.id blogid,b.title
+        from t_blog b, t_tag t, t_blog_tags bt
+        where b.id = bt.blog_id and t.id = bt.tag_id
+    </select>
 </mapper>

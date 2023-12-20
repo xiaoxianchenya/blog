@@ -41,4 +41,21 @@
         set name = #{name}
         where id = #{id}
     </update>
+
+
+    <resultMap id="indexTypeResult" type="com.traning.blog.pojo.Type">
+        <id property="id" column="id"/>
+        <result property="name" column="name"></result>
+        <collection property="blogs" ofType="com.traning.blog.pojo.Blog">
+            <id property="id" column="blogid"/>
+            <result property="title" column="title"/>
+            <result property="typeId" column="typeid"/>
+        </collection>
+    </resultMap>
+    <select id="getIndexTypes" resultMap="indexTypeResult">
+        SELECT t.id, t.name,
+               b.id blogid, b.title title,b.type_id typeid
+        FROM t_type t,t_blog b
+        WHERE t.id = b.type_id
+    </select>
 </mapper>

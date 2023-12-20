@@ -16,4 +16,6 @@ public interface TypeService {
     void addType(Type type);
 
     void updateType(Type type);
+
+    List<Type> getIndexTypes();
 }

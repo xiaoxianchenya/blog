@@ -14,4 +14,8 @@ public interface BlogService {
     Blog getBlogById(Long id);
 
     void deleteBlogById(Long id);
+
+    List<Blog> getIndexBlog();
+
+    List<Blog> getRecommendBlog();
 }

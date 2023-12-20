@@ -135,4 +135,20 @@
         from t_blog
         where  type_id = #{id};
     </select>
+
+    <select id="getIndexBlog" resultMap="blogResult">
+        SELECT b.id, b.title, b.`first_picture`, b.views, b.update_time, b.`description`,
+               t.name typename, t.id typeid,
+               u.nickname, u.avatar
+        FROM t_blog b,t_user u,t_type t
+        WHERE b.type_id = t.id AND u.id = b.user_id
+        ORDER BY b.update_time DESC
+    </select>
+
+    <select id="getRecommendBlog" resultMap="blogResult">
+        SELECT id,title,`recommend`
+        FROM t_blog
+        WHERE `recommend` = 1
+        ORDER BY update_time DESC
+    </select>
 </mapper>

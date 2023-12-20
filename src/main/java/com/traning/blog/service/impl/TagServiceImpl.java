@@ -69,6 +69,12 @@ public class TagServiceImpl implements TagService {
 
     }
 
+    @Override
+    public List<Tag> getIndexTags() {
+
+        return tagMapper.getIndexTags();
+    }
+
     private List<Long> TagsToList(String tagIds) {
         List<Long> tagIdList = new ArrayList<>();
         if(StringUtils.hasText(tagIds)){

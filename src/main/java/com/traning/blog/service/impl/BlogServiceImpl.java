@@ -71,4 +71,14 @@ public class BlogServiceImpl implements BlogService {
         blogMapper.deleteBlogById(id);
         blogTagsMapper.deleteByBlogId(id);
     }
+
+    @Override
+    public List<Blog> getIndexBlog() {
+        return blogMapper.getIndexBlog();
+    }
+
+    @Override
+    public List<Blog> getRecommendBlog() {
+        return blogMapper.getRecommendBlog();
+    }
 }

@@ -18,4 +18,6 @@ public interface TagMapper {
     void updateTag(Tag tag);
 
     void deleteTagById(Long id);
+
+    List<Tag> getIndexTags();
 }
