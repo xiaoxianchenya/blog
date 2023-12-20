@@ -21,12 +21,12 @@
 <nav th:fragment="menu(n)" class="ui attached segment m-padded-tb-mini m-shadow-small" >
   <div class="ui container">
     <div class="ui secondary stackable menu">
-      <h1 class="ui pink header item">欢迎来访</h1>
+      <h1 class="ui blue header item">欢迎来访</h1>
       <a href="#" th:href="@{/}" class="m-item item blue m-mobile-hide" th:classappend="${n==1}?'active'"><i class=" home icon"></i>首页</a>
       <a href="#" th:href="@{/types/-1}" class="m-item violet item m-mobile-hide" th:classappend="${n==2}?'active'"><i class=" idea icon"></i>分类</a>
       <a href="#" th:href="@{/tags/-1}" class="m-item pink item m-mobile-hide" th:classappend="${n==3}?'active'"><i class=" tags icon"></i>标签</a>
       <a href="#" th:href="@{/archives}"class="m-item orange item m-mobile-hide" th:classappend="${n==4}?'active'"><i class=" clone icon"></i>时间线</a>
-      <a href="#" th:href="@{/about}"class="m-item green item m-mobile-hide" th:classappend="${n==5}?'active'"><i class=" info icon"></i>关于我</a>
+<!--      <a href="#" th:href="@{/about}"class="m-item green item m-mobile-hide" th:classappend="${n==5}?'active'"><i class=" info icon"></i>关于我</a>-->
       <div class="right m-item item m-mobile-hide">
         <form name="search" action="#" method="post" th:action="@{/search}" target="_blank">
           <div class="ui icon  transparent input m-margin-tb-tiny">
@@ -55,6 +55,7 @@
   <script src="../static/lib/tocbot/tocbot.min.js" th:src="@{/lib/tocbot/tocbot.min.js}"></script>
   <script src="../static/lib/qrcode/qrcode.min.js" th:src="@{/lib/qrcode/qrcode.min.js}"></script>
   <script src="../static/lib/waypoints/jquery.waypoints.min.js" th:src="@{/lib/waypoints/jquery.waypoints.min.js}"></script>
+
 </th:block>
 
 </body>

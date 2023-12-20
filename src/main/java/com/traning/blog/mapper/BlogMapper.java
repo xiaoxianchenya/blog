@@ -30,4 +30,10 @@ public interface BlogMapper {
     Blog getDetailedBlog(Long id);
 
     List<Blog> getBlogByTagId(Long id);
+
+    List<String> getAllYear();
+
+    List<Blog> getBlogsByYear(String year);
+
+    Integer getCountBlog();
 }

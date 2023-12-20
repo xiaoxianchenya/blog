@@ -3,6 +3,7 @@ package com.traning.blog.service;
 import com.traning.blog.pojo.Blog;
 
 import java.util.List;
+import java.util.Map;
 
 public interface BlogService {
     List<Blog> getAllBlogs();
@@ -26,4 +27,8 @@ public interface BlogService {
     List<Blog> getBlogByTagId(Long id);
 
     List<Blog> searchByTypeId(Long tid);
+
+    Map<String, List<Blog>> archiveBlog();
+
+    Integer getCountBlog();
 }

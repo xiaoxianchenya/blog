@@ -1,29 +1,45 @@
+html,body {
+    height: 100%;
+    width: 100%;
+}
 
 body {
+    background-attachment:fixed;
     background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);   //默认背景
-    background-size: cover;
+    background-size: 100% 100%;
+
 }
 .index-bg{
-    background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
-    background-size: cover;
+    background-color: #0093E9;
+    background-image: linear-gradient(160deg, #0093E9 0%, #80bed0 100%);
+    background-size: 100% 100%;
+    background-attachment:fixed;
 }
 .type-bg{
-    background: url("/images/index.jpg");
-    background-size: cover;
+    background-color: #7100e9;
+    background-image: linear-gradient(160deg, #7100e9 0%, #80cad0 100%);
+    background-size: 100% 100%;
+    background-attachment:fixed;
 }
 .tag-bg{
-    background-image: linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%);
-    background-size: cover;
+    background-color: #e32398;
+    background-image: linear-gradient(160deg, #e32398 0%, #d7c0de 100%);
+    background-size: 100% 100%;
+    background-attachment:fixed;
 }
 .archives-bg{
-    background: url("/images/bg6.jpg");
-    background-size: cover;
-}
-.aboutme-bg{
-    background: url("/images/bg9.jpg");
-    background-size: cover;
+    background-color: #e37923;
+    background-image: linear-gradient(160deg, #e37923 0%, #dcdcbe 100%);
+    background-size: 100% 100%;
+    background-attachment:fixed;
 }
 
+.search-bg{
+    background-color: #3cd673;
+    background-image: linear-gradient(160deg, #3cd673 0%, #b7d6d3 100%);
+    background-size: 100% 100%;
+    background-attachment:fixed;
+}
 
 .m-padded-mini {
     padding: 0.2em !important;
@@ -197,3 +213,4 @@ body {
         width: 100% !important;
     }
 }
+

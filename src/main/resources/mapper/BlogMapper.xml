@@ -189,4 +189,20 @@
         ORDER BY b.update_time DESC
     </select>
 
+    <select id="getAllYear" resultType="java.lang.String">
+        SELECT DISTINCT DATE_FORMAT(b.update_time, '%Y') AS unique_years
+        FROM t_blog b
+        ORDER BY unique_years;
+    </select>
+
+    <select id="getBlogsByYear" resultMap="blogResult">
+        SELECT b.id,b.title,b.flag,b.update_time
+        FROM t_blog b
+        WHERE DATE_FORMAT(b.update_time,"%Y") = #{year}
+    </select>
+
+    <select id="getCountBlog" resultType="java.lang.Integer">
+        SELECT COUNT(*)
+        FROM t_blog;
+    </select>
 </mapper>

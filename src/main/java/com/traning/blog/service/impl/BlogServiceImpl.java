@@ -11,8 +11,7 @@ import com.traning.blog.utils.MarkdownUtils;
 import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;
 
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 @Service
 public class BlogServiceImpl implements BlogService {
@@ -112,6 +111,29 @@ public class BlogServiceImpl implements BlogService {
     @Override
     public List<Blog> searchByTypeId(Long tid) {
         return blogMapper.searchByTypeId(tid);
+    }
+
+    @Override
+    public Map<String, List<Blog>> archiveBlog() {
+        //获取博客更新年份
+        List<String> years = blogMapper.getAllYear();
+        TreeMap<String, List<Blog>> map = new TreeMap<>(new Comparator<String>() {
+            @Override
+            public int compare(String o1, String o2) {
+                return Integer.compare(Integer.parseInt(o1), Integer.parseInt(o2));
+            }
+        });
+
+        for (String year : years) {
+            List<Blog> blogs = blogMapper.getBlogsByYear(year);
+            map.put(year,blogs);
+        }
+        return map;
+    }
+
+    @Override
+    public Integer getCountBlog() {
+        return blogMapper.getCountBlog();
     }
 
 
