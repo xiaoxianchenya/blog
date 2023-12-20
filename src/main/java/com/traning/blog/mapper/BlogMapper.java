@@ -25,6 +25,8 @@ public interface BlogMapper {
 
     List<Blog> searchByTitle(String query);
 
+    List<Blog> searchByTypeId(Long tid);
+
     Blog getDetailedBlog(Long id);
 
     List<Blog> getBlogByTagId(Long id);

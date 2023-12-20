@@ -180,4 +180,13 @@
         WHERE b.user_id = u.id AND tb.blog_id = b.id AND b.type_id = type.id AND tb.tag_id = tag.id AND  tag.id = #{id}
         ORDER BY b.update_time DESC
     </select>
+    <select id="searchByTypeId" resultMap="blogResult">
+        SELECT b.id, b.title, b.`first_picture`, b.views, b.update_time, b.`description`,
+               t.name typename, t.id typeid,
+               u.nickname, u.avatar
+        FROM t_blog b,t_user u,t_type t
+        WHERE b.type_id = t.id AND u.id = b.user_id AND b.type_id = #{id}
+        ORDER BY b.update_time DESC
+    </select>
+
 </mapper>

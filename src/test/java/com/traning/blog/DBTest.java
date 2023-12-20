@@ -27,4 +27,12 @@ public class DBTest {
         }
     }
 
+    @Test
+    public void test_searchByTypeId(){
+        List<Blog> blogs = blogService.searchByTypeId(3L);
+        for (Blog blog : blogs) {
+            log.error(blog.toString());
+        }
+    }
+
 }
