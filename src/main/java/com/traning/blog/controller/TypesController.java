@@ -30,14 +30,10 @@ public class TypesController {
     TypeService typeService;
     @Autowired
     BlogService blogService;
-
-
-
     @GetMapping("/{id}")
     public String typeViews(@RequestParam(required = false, defaultValue = "1", value = "pageNum")Integer pageNum,
                             @PathVariable("id") Long id,
                             Model model){
-
         List<Type> types = typeService.getIndexTypes();
         if(id == -1){
             id = types.get(0).getId();
@@ -48,7 +44,6 @@ public class TypesController {
         model.addAttribute("types", types);
         model.addAttribute("pageInfo", pageInfo);
         model.addAttribute("activeType", id);
-
         return "/types";
     }
 
