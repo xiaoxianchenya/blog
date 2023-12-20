@@ -6,6 +6,7 @@ import com.traning.blog.pojo.Blog;
 import com.traning.blog.pojo.BlogTags;
 import com.traning.blog.pojo.Tag;
 import com.traning.blog.service.BlogService;
+import com.traning.blog.utils.MarkdownUtils;
 import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;
 
@@ -85,6 +86,21 @@ public class BlogServiceImpl implements BlogService {
     @Override
     public List<Blog> searchByTitle(String query) {
         return blogMapper.searchByTitle(query);
+    }
+
+    @Override
+    public Blog getDetailedBlog(Long id) {
+        //查询详情
+        Blog blog = blogMapper.getDetailedBlog(id);
+        if(blog == null){
+            throw new NullPointerException("博客不在");
+        }
+
+        String content = blog.getContent();
+        String contentHTML = MarkdownUtils.markdownToHtmlExtensions(content);
+        blog.setContent(contentHTML);
+
+        return blog;
     }
 
 

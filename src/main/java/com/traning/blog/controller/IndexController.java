@@ -12,6 +12,7 @@ import jakarta.annotation.Resource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -30,7 +31,7 @@ public class IndexController {
     private TagService tagService;
 
     @GetMapping("/")
-    public String Index(@RequestParam(required = false,defaultValue = "1",value = "pagenum")Integer pagenum, Model model){
+    public String Index(@RequestParam(required = false,defaultValue = "1",value = "pageNum")Integer pagenum, Model model){
 
         PageHelper.startPage(pagenum,5);
         //获取全部博客
@@ -54,7 +55,7 @@ public class IndexController {
     }
 
     @PostMapping("/search")
-    public String search(@RequestParam(required = false, defaultValue = "1", value = "pagenum") Integer pageNum,
+    public String search(@RequestParam(required = false, defaultValue = "1", value = "pageNum") Integer pageNum,
                          @RequestParam("query") String title, Model model) {
         PageHelper.startPage(pageNum, 5);
         List<Blog> blogs = blogService.searchByTitle(title);
@@ -63,4 +64,10 @@ public class IndexController {
         return "/search";
     }
 
+    @GetMapping("blog/{id}")
+    public String getDetailedBlog(@PathVariable("id")Long id,Model model){
+        Blog blog = blogService.getDetailedBlog(id);
+        model.addAttribute("blog",blog);
+        return "blog";
+    }
 }

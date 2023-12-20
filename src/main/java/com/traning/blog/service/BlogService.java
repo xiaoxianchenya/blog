@@ -20,4 +20,6 @@ public interface BlogService {
     List<Blog> getRecommendBlog();
 
     List<Blog>  searchByTitle(String query);
+
+    Blog getDetailedBlog(Long id);
 }

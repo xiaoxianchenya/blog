@@ -161,4 +161,13 @@
         where b.type_id = t.id and  u.id = b.user_id and (b.title like #{pattern} or b.content like  #{pattern})
         order by b.update_time desc
     </select>
+
+    <select id="getDetailedBlog" resultMap="blogResult">
+        SELECT b.id, b.first_picture, b.flag, b.title, b.content, b.views,
+               b.update_time,b.commentabled, b.share_statement, b.appreciation,
+               u.nickname, u.avatar,
+               tag.id tagid, tag.name tagname
+        FROM t_blog b, t_user u, t_tag tag, t_blog_tags tb
+        WHERE b.user_id = u.id AND tb.blog_id = b.id AND tb.tag_id = tag.id AND  b.id = #{id}
+    </select>
 </mapper>
