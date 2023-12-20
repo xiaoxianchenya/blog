@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.traning.blog.mapper.UserMapper">
+
+    <resultMap id="userResult" type="com.traning.blog.pojo.User" autoMapping="true"></resultMap>
+
+    <sql id="UserColumns">
+        id,nickname,username,password,email,avatar,type,create_time,update_time
+    </sql>
+
+    <select id="selectUserByUserName" resultType="com.traning.blog.pojo.User">
+        select <include refid="UserColumns"/>
+        from t_user
+        where username = #{username} and password = #{md5Password}
+    </select>
+</mapper>

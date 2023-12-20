@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.traning.blog.mapper.TagMapper">
+
+    <select id="selectAllTags" resultType="com.traning.blog.pojo.Tag">
+        select id, name
+        from t_tag
+        order by id desc
+    </select>
+
+    <select id="selectById" resultType="com.traning.blog.pojo.Tag">
+        select id,name
+        from t_tag
+        where id = #{id}
+    </select>
+
+    <select id="getTagByName" resultType="com.traning.blog.pojo.Tag">
+        select id,name
+        from t_tag
+        where name = #{name}
+    </select>
+
+    <insert id="addTag" parameterType="com.traning.blog.pojo.Tag">
+        insert into t_tag(id,name)
+        values (#{id},#{name})
+    </insert>
+
+    <update id="updateTag" parameterType="com.traning.blog.pojo.Tag">
+        update t_tag
+        set name = #{name}
+        where id = #{id}
+    </update>
+
+    <delete id="deleteTagById">
+        delete from t_tag
+        where id = #{id}
+    </delete>
+</mapper>

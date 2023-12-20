@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.traning.blog.mapper.BlogMapper">
+
+    <sql id="columns">
+
+    </sql>
+
+    <resultMap id="blogResult" type="com.traning.blog.pojo.Blog">
+        <id property="id" column="id"/>
+        <result property="title" column="title"/>
+        <result property="content" column="content"/>
+        <result property="firstPicture" column="first_picture"/>
+        <result property="flag" column="flag"/>
+        <result property="views" column="views"/>
+        <result property="appreciation" column="appreciation"/>
+        <result property="shareStatement" column="share_statement"/>
+        <result property="commentabled" column="commentabled"/>
+        <result property="published" column="published"/>
+        <result property="recommend" column="recommend"/>
+        <result property="createTime" column="create_time"/>
+        <result property="updateTime" column="update_time"/>
+        <result property="typeId" column="type_id"/>
+        <result property="userId" column="user_id"/>
+        <result property="tagIds" column="tag_ids"/>
+        <result property="description" column="description"/>
+
+        <association property="type" javaType="com.traning.blog.pojo.Type">
+            <id property="id" column="typeid"/>
+            <result property="name" column="typename"/>
+        </association>
+
+        <association property="user" javaType="com.traning.blog.pojo.User">
+            <id property="id" column="userid"/>
+            <result property="nickname" column="nickname"/>
+            <result property="username" column="username"/>
+            <result property="email" column="email"/>
+            <result property="avatar" column="avatar"/>
+        </association>
+
+        <collection property="tags" ofType="com.traning.blog.pojo.Tag">
+            <id property="id" column="tagid"/>
+            <result property="name" column="name"/>
+        </collection>
+    </resultMap>
+
+    <select id="selectAllBlogs" resultMap="blogResult">
+        select b.id,
+               b.title,
+               b.update_time,
+               b.recommend,
+               b.type_id,
+               b.published,
+               t.id   typeid,
+               t.name typename
+        from t_blog b,
+             t_type t
+        where b.type_id = t.id
+        order by id desc
+    </select>
+
+    <insert id="saveBlog" parameterType="com.traning.blog.pojo.Blog" useGeneratedKeys="true" keyProperty="id">
+        insert into t_blog(title, content,
+                           first_picture,
+                           flag, views,
+                           appreciation,
+                           share_statement,
+                           commentabled,
+                           published,recommend,
+                           create_time,update_time,
+                           type_id,user_id,
+                           description,tag_ids)
+        values (
+                #{title},
+                #{content},
+                #{firstPicture},
+                #{flag},
+                #{views},
+                #{appreciation},
+                #{shareStatement},
+                #{commentabled},
+                #{published},
+                #{recommend},
+                #{createTime},
+                #{updateTime},
+                #{typeId},
+                #{userId},
+                #{description},
+                #{tagIds}
+               )
+    </insert>
+
+    <select id="selectBlogById" resultMap="blogResult">
+        select id,
+               published,
+               flag,
+               title,
+               content,
+               type_id,
+               tag_ids,
+               first_picture,
+               description,
+               recommend,
+               share_statement,
+               appreciation,
+               commentabled
+        from t_blog  where  id = #{id};
+    </select>
+
+    <update id="updateBlog" parameterType="com.traning.blog.pojo.Blog">
+        update t_blog
+        set title = #{title},
+            content = #{content},
+            first_picture = #{firstPicture},
+            flag = #{flag},
+            appreciation = #{appreciation},
+            share_statement = #{shareStatement},
+            commentabled = #{commentabled},
+            published = #{published},
+            recommend = #{recommend},
+            update_time = #{updateTime},
+            type_id = #{typeId},
+            description = #{description},
+            tag_ids = #{tagIds}
+        where id = #{id}
+    </update>
+
+    <delete id="deleteBlogById">
+        delete from t_blog
+        where id = #{id}
+    </delete>
+
+    <select id="selectByTypeId" resultMap="blogResult">
+        select id
+        from t_blog
+        where  type_id = #{id};
+    </select>
+</mapper>

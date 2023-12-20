@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.traning.blog.mapper.TypeMapper">
+
+
+    <resultMap id="typeResult" type="com.traning.blog.pojo.Type">
+
+    </resultMap>
+
+
+    <select id="selectAllType" resultType="com.traning.blog.pojo.Type">
+        select id, name
+        from t_type
+    </select>
+
+
+    <select id="selectById" resultType="com.traning.blog.pojo.Type">
+        select id, name
+        from t_type
+        where id = #{id}
+    </select>
+
+    <delete id="deleteById">
+        delete from t_type
+        where id = #{id}
+    </delete>
+
+    <select id="getTypeByName" resultType="com.traning.blog.pojo.Type">
+        select id,name
+        from t_type
+        where name = #{name}
+    </select>
+
+    <insert id="addType" parameterType="com.traning.blog.pojo.Type" >
+        insert into t_type(id,name)
+        values (#{id},#{name})
+    </insert>
+
+    <update id="updateType" parameterType="com.traning.blog.pojo.Type">
+        update t_type
+        set name = #{name}
+        where id = #{id}
+    </update>
+</mapper>
