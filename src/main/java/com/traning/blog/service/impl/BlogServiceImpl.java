@@ -1,5 +1,6 @@
 package com.traning.blog.service.impl;
 
+import com.traning.blog.exception.myException;
 import com.traning.blog.mapper.BlogMapper;
 import com.traning.blog.mapper.BlogTagsMapper;
 import com.traning.blog.pojo.Blog;
@@ -93,7 +94,7 @@ public class BlogServiceImpl implements BlogService {
         //查询详情
         Blog blog = blogMapper.getDetailedBlog(id);
         if(blog == null){
-            throw new NullPointerException("博客不在");
+            throw new myException("博客不存在");
         }
 
         String content = blog.getContent();
