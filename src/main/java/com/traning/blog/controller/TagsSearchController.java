@@ -34,7 +34,7 @@ public class TagsSearchController {
                             @RequestParam(required = false, defaultValue = "1", value = "pageNum") Integer pageNum,
                             Model model) {
         List<Tag> tags = tagService.getIndexTags();
-        if (id.equals(Long.valueOf(-1))) {
+        if (id.equals(Long.valueOf(-1)) && tags.size()!=0) {
             id = tags.get(0).getId();
         }
         PageHelper.startPage(pageNum, 5);
