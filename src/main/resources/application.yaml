@@ -5,10 +5,13 @@ spring:
   thymeleaf:
     cache: false
   datasource:
-    url: jdbc:mysql://localhost:3306/test?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf-8
+    url: jdbc:mysql://192.168.233.129:3306/blog?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf-8
     driver-class-name: com.mysql.cj.jdbc.Driver
     username: root
-    password: root
+    password: 1234
+  mvc:
+    favicon:
+      enbaled: false
 
 pagehelper:
   helper-dialect: mysql
@@ -22,3 +25,5 @@ logging:
   level:
     root: info
     com.traning.blog: debug
+
+

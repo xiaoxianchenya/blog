@@ -36,4 +36,6 @@ public interface BlogMapper {
     List<Blog> getBlogsByYear(String year);
 
     Integer getCountBlog();
+
+    void addViews(Long id);
 }

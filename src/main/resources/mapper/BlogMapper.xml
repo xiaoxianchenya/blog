@@ -205,4 +205,10 @@
         SELECT COUNT(*)
         FROM t_blog;
     </select>
+
+    <update id="addViews">
+        update t_blog
+        set views = views + 1
+        where id = #{id}
+    </update>
 </mapper>

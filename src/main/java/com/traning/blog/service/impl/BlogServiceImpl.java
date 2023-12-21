@@ -95,7 +95,6 @@ public class BlogServiceImpl implements BlogService {
         if(blog == null){
             throw new myException("博客不存在");
         }
-
         String content = blog.getContent();
         String contentHTML = MarkdownUtils.markdownToHtmlExtensions(content);
         blog.setContent(contentHTML);
@@ -134,6 +133,11 @@ public class BlogServiceImpl implements BlogService {
     @Override
     public Integer getCountBlog() {
         return blogMapper.getCountBlog();
+    }
+
+    @Override
+    public void addViews(Long id) {
+        blogMapper.addViews(id);
     }
 
 
